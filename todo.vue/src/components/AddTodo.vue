@@ -5,16 +5,45 @@
         type="text"
         className="todo-input"
         placeholder="Enter your todo item"
+        v-model="newName"
+        @keyup.enter="add"
       />
-      <button className="add-btn">
+      <button className="add-btn" onclick="add">
         +
       </button>
     </section>
-    <p className="alert-error" style={alertState}>
+    <p className="alert-error" v-show="alertState">
       Please input something first.
     </p>
   </section>
 </template>
+
+<script>
+import {nanoid} from 'nanoid'
+export default {
+  name:"AddTodo",
+  props:['addTodo'],
+  data(){
+    return{
+      newName:'',
+      alertState:false,
+    }
+  },
+  methods:{
+    add(){
+      if(!this.newName.trim()){
+        this.alertState=true;
+        this.newName='';
+        return;
+      }
+      const todoObj = {id:nanoid(),title:this.newName.trim(),done:false};
+      this.addTodo(todoObj);
+      this.newName='';
+      this.alertState=false;
+    }
+  }
+}
+</script>
 
 <style>
 body,

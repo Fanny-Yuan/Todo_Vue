@@ -1,7 +1,7 @@
 <template>
   <main>
     <h1 className="slogan">Use this to manage your life and work</h1>
-    <AddTodo />
+    <AddTodo :addTodo="addTodo"/>
     <TodoList :todos="todos"/>
     <CompletedList :todos="todos"/>
   </main>
@@ -30,6 +30,11 @@ export default {
       ]
     }
   },
+  methods:{
+    addTodo(todoObj){
+      this.todos.unshift(todoObj)
+    },
+  }
 }
 </script>
 
