@@ -6,9 +6,8 @@
         className="todo-input"
         placeholder="Enter your todo item"
         v-model="newName"
-        @keyup.enter="add"
       />
-      <button className="add-btn" onclick="add">
+      <button className="add-btn" @click="add">
         +
       </button>
     </section>
