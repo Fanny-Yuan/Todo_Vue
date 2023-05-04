@@ -1,10 +1,17 @@
 <template>
     <li>
-      <input type="checkbox" :checked=false />
-      <label data-id={id}>test task</label>
+      <input type="checkbox" :checked="todo.done" />
+      <label data-id={id}>{{todo.title}}</label>
       <i class="bi-trash" data-id={id} ></i>
     </li>
 </template>
+
+<script>
+  export default {
+    name:"TodoItem",
+    props:["todo"],
+  }
+</script>
 
 <style>
 body,

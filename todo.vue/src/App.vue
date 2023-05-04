@@ -2,8 +2,8 @@
   <main>
     <h1 className="slogan">Use this to manage your life and work</h1>
     <AddTodo />
-    <TodoList />
-    <CompletedList />
+    <TodoList :todos="todos"/>
+    <CompletedList :todos="todos"/>
   </main>
 </template>
 
@@ -18,7 +18,18 @@ export default {
     AddTodo,
     TodoList,
     CompletedList
-}
+  },
+  data() {
+    return {
+      //由于todos是MyHeader组件和MyFooter组件都在使用，所以放在App中（状态提升）
+      todos:[
+        {id:'1',title:'task01',done:false},
+        {id:'2',title:'task02',done:false},
+        {id:'3',title:'task03',done:true},
+        {id:'4',title:'task04',done:true}
+      ]
+    }
+  },
 }
 </script>
 
