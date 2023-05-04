@@ -1,15 +1,23 @@
 <template>
     <li>
-      <input type="checkbox" :checked="todo.done" />
+      <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)"/>
       <label data-id={id}>{{todo.title}}</label>
-      <i class="bi-trash" data-id={id} ></i>
+      <i class="bi-trash" data-id={id} @click="handleDelete(todo.id)"></i>
     </li>
 </template>
 
 <script>
   export default {
     name:"TodoItem",
-    props:["todo"],
+    props:["todo","checkTodo","deleteTodo"],
+    methods:{
+      handleCheck(id){
+        this.checkTodo(id);
+      },
+      handleDelete(id){
+        this.deleteTodo(id);
+      }
+    }
   }
 </script>
 

@@ -4,7 +4,9 @@
     <TodoItem 
         v-for="todoObj in completedTask"
         :key="todoObj.id" 
-        :todo="todoObj" 
+        :todo="todoObj"
+        :checkTodo="checkTodo" 
+        :deleteTodo="deleteTodo"
     />
   </ul>
 </template>
@@ -15,7 +17,7 @@ import TodoItem from './TodoItem.vue';
 export default {
   name: 'CompletedList',
   components: {TodoItem},
-  props:["todos"],
+  props:["todos","checkTodo","deleteTodo"],
   computed:{
     completedTask(){
       return this.todos.filter((task)=>task.done);

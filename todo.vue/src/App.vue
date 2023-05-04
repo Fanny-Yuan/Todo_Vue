@@ -2,8 +2,8 @@
   <main>
     <h1 className="slogan">Use this to manage your life and work</h1>
     <AddTodo :addTodo="addTodo"/>
-    <TodoList :todos="todos"/>
-    <CompletedList :todos="todos"/>
+    <TodoList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
+    <CompletedList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
   </main>
 </template>
 
@@ -33,6 +33,14 @@ export default {
   methods:{
     addTodo(todoObj){
       this.todos.unshift(todoObj)
+    },
+    checkTodo(id){
+      this.todos.forEach((todo)=>{
+        if(todo.id === id) todo.done = !todo.done
+      })
+    },
+    deleteTodo(id){
+				this.todos = this.todos.filter( todo => todo.id !== id )
     },
   }
 }
